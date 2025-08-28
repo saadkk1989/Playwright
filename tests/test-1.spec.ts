@@ -1,0 +1,33 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page1.goto('http://128.1.103.4/Ver73_HICO_NDB/Default.aspx');
+  await page1.getByPlaceholder('Enter Distributor Id').click();
+  await page1.getByPlaceholder('Enter Distributor Id').fill('000002');
+  await page1.getByPlaceholder('Enter User Id').click();
+  await page1.getByPlaceholder('Enter User Id').fill('admin');
+  await page1.getByPlaceholder('Enter User Password').click();
+  await page1.getByPlaceholder('Enter User Password').fill('admin');
+  await page1.getByRole('button', { name: 'Sign-In' }).click();
+  await page1.locator('a').filter({ hasText: 'Main Menu' }).click();
+  await page1.getByPlaceholder('Search').fill('order booker');
+  await page1.getByText('Setups,DSR,Order BookerSetups').click();
+  await page1.getByRole('button', { name: 'Add' }).click();
+  await page1.locator('#ctl00_cphMainContent_txtCode').click();
+  await page1.locator('#ctl00_cphMainContent_txtCode').fill('359');
+  await page1.locator('#ctl00_cphMainContent_txtName').click();
+  await page1.locator('#ctl00_cphMainContent_txtName').fill('test');
+  await page1.locator('#ctl00_cphMainContent_txtNIC').click();
+  await page1.locator('#ctl00_cphMainContent_txtNIC').fill('123');
+  await page1.locator('#ctl00_cphMainContent_txtDOB_btnImage').click();
+  await page1.getByText('March,').click();
+  await page1.locator('#ctl00_cphMainContent_txtDOB_btnImage').click();
+  await page1.locator('#ctl00_cphMainContent_txtDOB_btnImage').click();
+  await page1.getByText('2025', { exact: true }).click();
+  await page1.getByText('2020', { exact: true }).click();
+  await page1.getByText('Feb').click();
+  await page1.getByTitle('Tuesday, February 04,').click();
+  await page1.locator('#ctl00_cphMainContent_ddlTM').selectOption('11111');
+  await page1.getByRole('button', { name: 'Save' }).click();
+  await page1.getByText('Record has been saved').click();
+});
